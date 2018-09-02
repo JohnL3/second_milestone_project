@@ -174,7 +174,45 @@ function Simon() {
 			 this.playSound();
 		 $('.cou').text('!!');
 		 this.count = 0;
-	}
+  }
+  //function used in checkPanelClicked ... if the right simon panel is clicked it 
+	//starts the process of flashing panel and playing sound
+	this.playNoteHuman = (note) => {
+		 
+    let noteColor = this.getColor(note);
+    let classname = note;
+    $( classname ).css('backgroundColor',noteColor);
+    
+     this.start = setInterval(()=>{this.humanNotes(note)},300);
+ };
+ // called from playNoteHuman 
+ this.humanNotes = (cls) => {
+    
+   let note = cls;
+   if(this.flash === false) this.playSound(note);
+  
+   this.flash = true;
+   let noteColor = this.getColor(note);
+ 
+   $( cls ).css('backgroundColor',noteColor);
+   this.flash = false;
+   clearInterval(this.start);
+   
+ }
+ // used in checkPanelClicked ... after player clicks a panel it resets playerTurn to false
+ this.resetPlayerTurn = () => {
+   if(this.count === this.panels.length){
+     this.count = 0;
+     this.playerTurn = false;
+     setTimeout(()=>{this.simonMakesMusic()}, 700);
+   }
+ }
+ // used in checkPanelClicked to increase count value if required
+ this.checkCount = () => {
+   if(this.count <= this.panels.length){
+     this.count++;
+   }
+ }
   
 }
 
@@ -190,4 +228,8 @@ $('.on-off').click(()=>{
 
 $('.strict').click(()=>{
 	simon.setStrict();
+})
+
+$('.panels').click(function(){
+	simon.clickedPanel($(this).attr('class').split(' ')[0].trim());
 })
