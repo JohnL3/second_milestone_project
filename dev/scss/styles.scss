@@ -25,3 +25,37 @@ $blue: #000075;
 @mixin black_border($width) {
   border: $width solid black
 }
+
+body, html {
+  margin: 0;
+}
+header {
+  width: 100%;
+  padding-top: 5px;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+    h1 {
+      font-size: 1.5em;
+      color: $heading-color;
+    }
+    @media screen and (min-width: 599px) {
+      text-align: initial;
+      @include grid_setup(repeat(12, 1fr), 60px);
+        h1 {
+          grid-column: 3/11;
+          padding-left: 20px;
+          border-left: 2px solid;
+        }
+        span {
+          @include grid_colrow(3,11,2,3 );
+        }
+    }
+}
+.hrr {
+  width: 85%;
+  margin: auto;
+  hr {
+    border: 1px solid #424242;
+
+  }
+}
