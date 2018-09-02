@@ -89,7 +89,44 @@ function Simon() {
   
   // used to get colors to push to panels array to show what the simon game played
 	this.randColor = (colors = ['.red','.green','.yellow','.blue']) => colors[randomNum(0,3)];
-	let randomNum = (min = 0, max = 3) => Math.floor(Math.random() * (max - min + 1)) + min;
+  let randomNum = (min = 0, max = 3) => Math.floor(Math.random() * (max - min + 1)) + min;
+  
+  	// used to flash the panel colors
+	this.getColor = (nameC)=>{
+		switch(nameC) {
+			case '.red':
+				return (this.flash)? '#b50000':'#f15b5b';
+			case '.green':
+				return (this.flash)? '#005500':'#30ab30';
+			case '.yellow':
+				return (this.flash)? '#dad518':'#f1f15b';
+			case '.blue':
+				return (this.flash)? '#000075':'#4b4bd2';
+		}
+	}
+	// used to play sound when its the games turn or when human presses a simon panel
+	this.playSound = (nameC = errorAudio) => {
+			switch(nameC) {
+			case '.red':
+				//this.playTone('red');
+				redAudio.play();
+				break;
+			case '.green':
+				//this.playTone('green');
+				greenAudio.play();
+				break;
+			case '.yellow':
+				//this.playTone('yellow');
+				yellowAudio.play();
+				break;
+			case '.blue':
+				//this.playTone('blue');
+				blueAudio.play();
+				break;
+			default:
+				nameC.play();
+			  }
+	};
 }
 
 let simon = new Simon();
