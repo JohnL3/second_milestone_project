@@ -167,10 +167,10 @@ function Simon() {
 	};
 	// if wrong panel clicked this function is ran
 	this.runError = () => {
-		 this.panels = (this.strict_on)?  []: null;
+    if(this.strict_on) this.panels = [];
 		 setTimeout(()=>{
 			 $('.cou').text(this.panels.length);
-			 },1000);
+			 },300);
 			 this.playSound();
 		 $('.cou').text('!!');
 		 this.count = 0;
