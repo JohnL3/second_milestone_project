@@ -1,0 +1,27 @@
+$heading-color: #444444;
+$panels-mobiles: 135px;
+$panels-large-screen: 200px;
+$labels: 13px;
+$labels-lg: 18px;
+$red: #b50000;
+$green: #005500;
+$yellow: #dad518;
+$blue: #000075;
+
+@mixin grid_setup($col_row...) {
+  display: grid;
+  grid-template-columns: nth($col_row, 1);
+
+  @if  nth($col_row, 2) != 0 {
+    grid-template-rows: nth($col_row, 2);
+  }
+}
+
+@mixin grid_colrow($cs,$ce,$rs,$re) {
+  grid-column: #{$cs}/#{$ce};
+  grid-row: #{$rs}/#{$re};
+}
+
+@mixin black_border($width) {
+  border: $width solid black
+}
