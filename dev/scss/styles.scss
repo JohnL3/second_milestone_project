@@ -110,7 +110,7 @@ header {
 	z-index: 100;
   background-color: white;
   @media screen and (min-width: 600px){
-	@include grid_setup(repeat(3, 1fr), repeat(2, 55px) 30px 45px)
+	@include grid_setup(repeat(3, 1fr), repeat(2, 55px) 30px 45px);
     height: 195px;
     width: 195px;
   }
