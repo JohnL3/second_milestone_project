@@ -59,3 +59,43 @@ header {
 
   }
 }
+.wrapper {
+  @include grid_setup(repeat(1,auto),0);
+  justify-content: center;
+  height: calc(100vh - 105px);
+  .wrap-box {
+    @include grid_setup(repeat(2, $panels-mobiles), repeat(2, $panels-mobiles));
+    margin: auto;
+    @media screen and (min-width: 600px) {
+      @include grid_setup(repeat(2, $panels-large-screen), repeat(2, $panels-large-screen));
+    }
+  }
+}
+.red,
+.green,
+.yellow,
+.blue {
+  width: $panels-mobiles - 6;
+  height: $panels-mobiles - 6;
+  @include black_border(2px);
+  @media screen and (min-width: 600px) {
+    width: $panels-large-screen - 6;
+    height: $panels-large-screen - 6;
+  }
+}
+.red{
+  background-color: $red;
+  @include grid_colrow(1,2,1,2);
+}
+.green{
+  background-color: $green;
+  @include grid_colrow(2,-1,1,2);
+}
+.yellow{
+  background-color: $yellow;
+  @include grid_colrow(1,2,2,-1);
+}
+.blue{
+  background-color: $blue;
+  @include grid_colrow(2,-1,2,-1);
+}
