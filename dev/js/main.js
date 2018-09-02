@@ -3,7 +3,7 @@ function Simon() {
 		  redAudio  = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'),
 		  yellowAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'),
 		  blueAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'),
-      errorAudio = new Audio('https://raw.githubusercontent.com/JohnL3/Photos/master/errorbsound.mp3')
+      errorAudio = new Audio('https://raw.githubusercontent.com/JohnL3/Photos/master/errorbsound.mp3');
       
       this.start = '';
       this.clicked = '';
@@ -16,7 +16,7 @@ function Simon() {
       this.started = false;
       this.playerTurn = false;
 
-      // Turn simon on or off
+  // Turn simon on or off
 	this.game_on_off = function() {
 		clearInterval(this.start);
 		if (this.on_off === false) {
@@ -54,7 +54,7 @@ function Simon() {
 		return this.started;
 		}
 		return this.started;
-	}
+	};
   
   // Set the game to strict mode
 	this.setStrict = function(){
@@ -67,13 +67,13 @@ function Simon() {
 				  this.strict_on = false;
 				}
 		}
-  }
+  };
 
   // logic used by computer to make sound and flash panels 
 	this.simonMakesMusic = function() {
 		this.addPanels(this.randColor());
-		this.start = setInterval(()=>{this.simonPlayNotes()},500);
-	}
+		this.start = setInterval(()=>{this.simonPlayNotes();},500);
+	};
   
   // used to push to the panels array
 	this.addPanels = function(item) {
@@ -82,7 +82,7 @@ function Simon() {
 		return item;
 		}
 		return null;
-	}
+	};
   
   // used to get colors to push to panels array to show what the simon game played
 	this.randColor = (colors = ['.red','.green','.yellow','.blue']) => colors[randomNum(0,3)];
@@ -107,7 +107,7 @@ function Simon() {
 			this.playerTurn = true;
 			this.index = 0;
 			}
-	}
+	};
   // used to flash the panel colors
 	this.getColor = (nameC)=>{
 		switch(nameC) {
@@ -120,7 +120,7 @@ function Simon() {
 			case '.blue':
 				return (this.flash)? '#000075':'#4b4bd2';
 		}
-	}
+	};
 	// used to play sound when its the games turn or when human presses a simon panel
 	this.playSound = (nameC = errorAudio) => {
 			switch(nameC) {
@@ -153,7 +153,7 @@ function Simon() {
 			return true;
 		}
 		return null;
-  }
+  };
   // function used in clickedPanel, to check if the proper simon panel was clicked
 	this.checkPanelClicked = () => {
 		if(this.panels[this.count] === this.clicked) {
@@ -164,17 +164,17 @@ function Simon() {
 			this.runError();
 			return true;
 		}
-	}
+	};
 	// if wrong panel clicked this function is ran
 	this.runError = () => {
-		 (this.strict_on)? this.panels = []: null;
+		 this.panels = (this.strict_on)?  []: null;
 		 setTimeout(()=>{
-			 $('.cou').text(this.panels.length)
+			 $('.cou').text(this.panels.length);
 			 },1000);
 			 this.playSound();
 		 $('.cou').text('!!');
 		 this.count = 0;
-  }
+  };
   //function used in checkPanelClicked ... if the right simon panel is clicked it 
 	//starts the process of flashing panel and playing sound
 	this.playNoteHuman = (note) => {
@@ -183,7 +183,7 @@ function Simon() {
     let classname = note;
     $( classname ).css('backgroundColor',noteColor);
     
-     this.start = setInterval(()=>{this.humanNotes(note)},300);
+     this.start = setInterval(()=>{this.humanNotes(note);},300);
  };
  // called from playNoteHuman 
  this.humanNotes = (cls) => {
@@ -198,21 +198,21 @@ function Simon() {
    this.flash = false;
    clearInterval(this.start);
    
- }
+ };
  // used in checkPanelClicked ... after player clicks a panel it resets playerTurn to false
  this.resetPlayerTurn = () => {
    if(this.count === this.panels.length){
      this.count = 0;
      this.playerTurn = false;
-     setTimeout(()=>{this.simonMakesMusic()}, 700);
+     setTimeout(()=>{this.simonMakesMusic();}, 700);
    }
- }
+ };
  // used in checkPanelClicked to increase count value if required
  this.checkCount = () => {
    if(this.count <= this.panels.length){
      this.count++;
    }
- }
+ };
   
 }
 
@@ -220,16 +220,16 @@ let simon = new Simon();
 
 $('.start-btn').click(() => {
 	simon.startSimon();
-})
+});
 
 $('.on-off').click(()=>{
 	simon.game_on_off();
-})
+});
 
 $('.strict').click(()=>{
 	simon.setStrict();
-})
+});
 
 $('.panels').click(function(){
 	simon.clickedPanel($(this).attr('class').split(' ')[0].trim());
-})
+});
