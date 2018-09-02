@@ -21,14 +21,11 @@ function Simon() {
 		clearInterval(this.start);
 		if (this.on_off === false) {
 		    this.on_off = true;
-			//this.init();
-			//this.tones.audContext.resume();
 		    this.start = '';
 		    $('.switch').css('float', 'right');
 			return this.on_off;
 		} else {
 		  clearInterval(this.start);
-		  //this.tones.audContext.suspend();
 		  this.start = '';
 		  $('.switch').css('float', 'left');
 		  $('.cou').text('--');
@@ -128,25 +125,22 @@ function Simon() {
 	this.playSound = (nameC = errorAudio) => {
 			switch(nameC) {
 			case '.red':
-				//this.playTone('red');
 				redAudio.play();
 				break;
 			case '.green':
-				//this.playTone('green');
 				greenAudio.play();
 				break;
 			case '.yellow':
-				//this.playTone('yellow');
 				yellowAudio.play();
 				break;
 			case '.blue':
-				//this.playTone('blue');
 				blueAudio.play();
 				break;
 			default:
 				nameC.play();
 			  }
-	};
+  };
+  
 }
 
 let simon = new Simon();
