@@ -49,6 +49,15 @@ function Simon() {
 		  return this.on_off;
 		}
   };
+  // Start the simon game
+	this.startSimon = function() {
+		if(this.on_off === true && this.started === false){
+		this.started = true;
+		this.simonMakesMusic();
+		return this.started;
+		}
+		return this.started;
+	}
   
   // Set the game to strict mode
 	this.setStrict = function(){
@@ -84,6 +93,10 @@ function Simon() {
 }
 
 let simon = new Simon();
+
+$('.start-btn').click(() => {
+	simon.startSimon();
+})
 
 $('.on-off').click(()=>{
 	simon.game_on_off();
