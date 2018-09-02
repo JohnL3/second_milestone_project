@@ -75,7 +75,7 @@ function Simon() {
   // logic used by computer to make sound and flash panels 
 	this.simonMakesMusic = function() {
 		this.addPanels(this.randColor());
-		//this.start = setInterval(()=>{this.simonPlayNotes()},500);
+		this.start = setInterval(()=>{this.simonPlayNotes()},500);
 	}
   
   // used to push to the panels array
@@ -91,7 +91,27 @@ function Simon() {
 	this.randColor = (colors = ['.red','.green','.yellow','.blue']) => colors[randomNum(0,3)];
   let randomNum = (min = 0, max = 3) => Math.floor(Math.random() * (max - min + 1)) + min;
   
-  	// used to flash the panel colors
+  // Used by simonMakesMusic 
+	this.simonPlayNotes = function(){
+		if(this.index < this.panels.length) {
+			let className = this.panels[this.index];
+			let color = this.getColor(className);
+			$( className ).css('backgroundColor',color);
+		
+			if(this.flash === false) {
+				$('.cou').text(this.panels.length);
+				this.playSound(className);
+			}
+			if(this.flash === true) this.index++;
+			
+			this.flash = !this.flash;
+		} else {
+			clearInterval(this.start);
+			this.playerTurn = true;
+			this.index = 0;
+			}
+	}
+  // used to flash the panel colors
 	this.getColor = (nameC)=>{
 		switch(nameC) {
 			case '.red':
