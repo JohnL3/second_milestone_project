@@ -61,7 +61,11 @@ function Simon() {
 				  this.strict_on = false;
 				}
 		}
-	}
+  }
+  
+  // used to get colors to push to panels array to show what the simon game played
+	this.randColor = (colors = ['.red','.green','.yellow','.blue']) => colors[randomNum(0,3)];
+	let randomNum = (min = 0, max = 3) => Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 let simon = new Simon();
