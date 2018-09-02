@@ -140,6 +140,41 @@ function Simon() {
 				nameC.play();
 			  }
   };
+  // used when simon panel is clicked
+	this.clickedPanel = (panel)=>{
+		if(this.playerTurn && this.on_off === true){
+			
+			this.clicked = '.' + panel;
+		 
+			this.checkPanelClicked();
+			
+			this.resetPlayerTurn();
+			
+			return true;
+		}
+		return null;
+  }
+  // function used in clickedPanel, to check if the proper simon panel was clicked
+	this.checkPanelClicked = () => {
+		if(this.panels[this.count] === this.clicked) {
+		  this.playNoteHuman(this.clicked);
+		  this.checkCount();
+		  return true;
+		}else {
+			this.runError();
+			return true;
+		}
+	}
+	// if wrong panel clicked this function is ran
+	this.runError = () => {
+		 (this.strict_on)? this.panels = []: null;
+		 setTimeout(()=>{
+			 $('.cou').text(this.panels.length)
+			 },1000);
+			 this.playSound();
+		 $('.cou').text('!!');
+		 this.count = 0;
+	}
   
 }
 
