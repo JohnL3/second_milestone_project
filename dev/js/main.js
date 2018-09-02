@@ -50,3 +50,9 @@ function Simon() {
 		}
 	};
 }
+
+let simon = new Simon();
+
+$('.on-off').click(()=>{
+	simon.game_on_off();
+})
