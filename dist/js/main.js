@@ -48,11 +48,28 @@ function Simon() {
 		  this.playerTurn = false;
 		  return this.on_off;
 		}
-	};
+  };
+  
+  // Set the game to strict mode
+	this.setStrict = function(){
+		if(this.on_off === true) {
+			if(this.strict_on === false) {
+				$('.strict-col').css('background-color', 'red');
+				this.strict_on = true;
+			} else {
+				  $('.strict-col').css('background-color', '#b96666');
+				  this.strict_on = false;
+				}
+		}
+	}
 }
 
 let simon = new Simon();
 
 $('.on-off').click(()=>{
 	simon.game_on_off();
+})
+
+$('.strict').click(()=>{
+	simon.setStrict();
 })
