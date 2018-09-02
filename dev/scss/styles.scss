@@ -99,3 +99,152 @@ header {
   background-color: $blue;
   @include grid_colrow(2,-1,2,-1);
 }
+.center{
+  @include grid_setup(repeat(3, 1fr), repeat(2, 45px) 20px 45px);
+  @include grid_colrow(1,-1,1,-1);
+	align-self: center;
+	justify-self: center;
+  height: 150px;
+  width: 150px;
+  @include black_border(4px);
+	z-index: 100;
+  background-color: white;
+  @media screen and (min-width: 600px){
+	@include grid_setup(repeat(3, 1fr), repeat(2, 55px) 30px 45px)
+    height: 195px;
+    width: 195px;
+  }
+}
+.count {
+	height: 45px;
+	font-size: $labels;
+	box-sizing: border-box;
+  margin:0 5px 5px 5px;
+  > span{
+    font-weight: 600;
+  }
+  @media screen and(min-width: 600px) {
+    font-size: $labels-lg;
+    margin: 0 10px 10px 10px;
+  }
+}
+.name {
+  @include grid_colrow(1,-1,1,2 );
+	justify-self: center;
+	font-size: 22px;
+	margin-top: 10px;
+  font-weight: 900;
+  @media screen and(min-width: 600px) {
+    margin-top: 20px;
+  }
+}
+.start {
+	font-weight: 600;
+	font-size: $labels;
+	box-sizing: border-box;
+	padding: 10px;
+  height: 45px;
+  @media screen and(min-width: 600px) {
+    font-size: $labels-lg;
+    padding: 15px;
+  }
+}
+button {
+	width: 32px;
+	height: 20px;
+	border-radius: 20px;
+	background: red;
+  margin-top: 11px;
+  margin-bottom: 6px;
+  @media screen and(min-width: 600px) {
+    margin-top: 7px;
+    margin-bottom: 0;
+  }
+}
+.cou {
+	margin: 0;
+	margin-top: 10px;
+	margin-bottom: 9px;
+	background: #380a12;
+	@include black_border(1px);
+	padding-left: 12px;
+	padding-right: 5px;
+	color: red;
+	font-size: 22px;
+}
+.strict-box {
+	height: 45px;
+}
+.strict{
+  width:15px;
+  height: 15px;
+  border-radius: 15px;
+  background-color: yellow;
+  @include black_border(2px);
+  margin: auto;
+  margin-bottom: 5px;
+}
+.strict-col{
+  width:8px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: #b96666;
+  @include black_border(2px);
+  margin: auto;
+  margin-top: 4px;
+  margin-bottom: 5px;
+}
+.label-count,
+.start-tex,
+.strict-tex {
+	font-size: $labels;
+	font-weight: 600;
+  padding-left: 5px;
+  @media screen and(min-width: 600px) {
+	padding-left: 5px;
+    font-size: $labels-lg;
+  }
+}
+
+.label-count{
+	grid-column: 1;
+	grid-row: 3;
+}
+.start-tex {
+	grid-column: 2;
+	grid-row: 3;
+}
+
+.on-off {
+	background-color: pink;
+	grid-column: 2;
+	height: 26px;
+	box-sizing: border-box;
+	padding: 2px;
+  @include black_border(1px);
+  margin: 3px;
+  @media screen and(min-width: 600px) {
+    height: 35px;
+  }
+}
+.on-off,
+.on,
+.off {
+	align-self: center;
+}
+.off {
+	padding-left: 10px;
+}
+.switch {
+	background: black;
+	width: 20px;
+  height: 20px;
+  @media screen and(min-width: 600px) {
+    width: 29px;
+    height: 29px;
+  }
+}
+.on {
+	justify-self: end;
+	padding-right: 10px;
+}
