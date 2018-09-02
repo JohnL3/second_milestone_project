@@ -62,6 +62,21 @@ function Simon() {
 				}
 		}
   }
+
+  // logic used by computer to make sound and flash panels 
+	this.simonMakesMusic = function() {
+		this.addPanels(this.randColor());
+		//this.start = setInterval(()=>{this.simonPlayNotes()},500);
+	}
+  
+  // used to push to the panels array
+	this.addPanels = function(item) {
+		if(this.on_off === true && this.started === true) { 
+		this.panels.push(item);
+		return item;
+		}
+		return null;
+	}
   
   // used to get colors to push to panels array to show what the simon game played
 	this.randColor = (colors = ['.red','.green','.yellow','.blue']) => colors[randomNum(0,3)];
