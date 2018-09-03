@@ -30,3 +30,4 @@ There are four coloured panels to click.
 
 ## Testing
 
+Write up for testing is done here: [testing_doc](./testing_doc.md)
