@@ -3,7 +3,7 @@
 
 A simple game where you try and repeat the pattern of sounds played by the simon game. To do this you click a panel matching the panels that flash when simon plays.  
 
- Project Hosted at: [jl-simon](jl-simon.surge.sh)
+ Project Hosted at: [jl-simon](http://jl-simon.surge.sh)
 
 ## UX
 
